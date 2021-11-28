@@ -1,0 +1,19 @@
+.video{
+    display: flex;
+    justify-content: end;
+    margin-top: 30px;
+}
+
+
+.video-list__item{
+    margin-right: 150px;
+    width: 900px;
+    height: 600px;
+    border-radius: 14px;
+    background-color: rgb(3, 250, 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: red;
+}

@@ -1,0 +1,33 @@
+.videoItem-list{
+    list-style-type: none;
+    width: 350px;
+    height: 70vh;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        background-color: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: red;
+
+    }
+
+    &:hover::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        background-color: #cfc2cf;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background: rgb(235, 85, 85);
+    }
+}
+
+.videoItem-list__item{
+    margin-top: 15px;
+    padding: 30px;
+    color: #fff;
+    border: 1px solid rgb(35, 245, 7);
+}

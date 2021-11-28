@@ -11,7 +11,7 @@ function Video() {
         .then(res=> res.json())
         .then(date=> setVideos(date.filter((v) => v.id === movie )))
     },[])
-    
+    console.log(setMovie);
     return(
         <div className="video">
             {videos.length > 0 && (

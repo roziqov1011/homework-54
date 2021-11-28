@@ -4,14 +4,14 @@ import { Context } from "../../context/Context";
 import "./VideoItem.scss"
 
 function VideoItem() {
-    
-    const {movie, setMovie} = useContext(Context)
+    const {movie, setMovie} = useContext(Context);
     const [videos, setVideos] = useState([]);
     useEffect(()=>{
         fetch(`https://jsonplaceholder.typicode.com/photos`)
         .then(res=> res.json())
         .then(date=> setVideos(date.filter((v) => v.albumId == window.localStorage.getItem("aId"))))
     },[])
+    console.log(movie);
     return(
         <div className="videoItem">
             {videos.length > 0 && (

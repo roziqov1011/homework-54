@@ -3,8 +3,10 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
+import { VidContext } from "../../context/VidContext";
 
 function Channel() {
+    const {movies, setMovies} = useContext(VidContext)
     const {movie, setMovie} = useContext(Context)
     const [videos, setVideos] = useState([]);
     useEffect(()=>{
@@ -12,18 +14,19 @@ function Channel() {
         .then(res=> res.json())
         .then(date=> setVideos(date.filter((v) => v.albumId === movie)))
     },[])
-
+    
     return(
         <div className="channel">
             <Sidebar></Sidebar>
-            {videos.length > 0 && (
+            
                 <div>
                     <div className="channel-poster">{movie} - channel</div>
                     <div className="channel-sub__poster"><span>{movie}</span> - channel</div>
                     <ul className="channel-list">
                     {videos.map((video)=>(
                         <Link to="/video" key={video.id} onClick={()=>{
-                            setMovie(video.id)
+                            setMovies(video.id)
+                            setMovie(video.albumId)
                             window.localStorage.setItem("aId", video.albumId)
                             window.localStorage.setItem("vId", video.id)
                             }}>
@@ -37,7 +40,6 @@ function Channel() {
                     ))}
                 </ul>
                 </div>
-            )}
         </div>
     )
 }

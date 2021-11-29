@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Link } from "react-router-dom";
+import { VidContext } from "../../context/VidContext";
 
 function Home() {
     const array = [];
+    const {movies, setMovies} = useContext(VidContext)
     const {movie, setMovie} = useContext(Context);
     console.log(movie);
     const [videos, setVideos] = useState([]);
@@ -35,14 +37,14 @@ function Home() {
                     <ul className="home-content__block" key={chanelId}>
                         {videos.filter((v)=>v.albumId === chanelId).map((video)=>(
                         <Link className="video-name" to="/video" key={video.id} onClick={()=>{
-                            setMovie(video.id)
+                            setMovies(video.id)
+                            setMovie(video.albumId)
                             window.localStorage.setItem("aId", video.albumId)
                             window.localStorage.setItem("vId", video.id)
                             }}>
                         <li key={video.id}>
                             <h4>{video.id} -video</h4>
                             <img src={video.url} alt="" width="200" height="100" />
-                            {/* <p>{video.title}</p> */}
                         </li>
                         </Link>
                         ))}

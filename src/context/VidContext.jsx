@@ -1,10 +1,10 @@
 import { createContext, useState } from "react";
 const VidContext = createContext();
 function VidProvider( { children } ){
-    const [movie, setMovie] = useState([])
+    const [movies, setMovies] = useState([])
     return(
         <>
-            <VidContext.Provider value={{movie, setMovie}}>{children}</VidContext.Provider>
+            <VidContext.Provider value={{movies, setMovies}}>{children}</VidContext.Provider>
         </>
     )
 }

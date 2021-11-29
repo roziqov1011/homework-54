@@ -1,24 +1,24 @@
 import {  useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
+import { VidContext } from "../../context/VidContext";
 import "./VideoItem.scss"
 
 function VideoItem() {
-    const {movie, setMovie} = useContext(Context);
+    const {movies, setMovies} = useContext(VidContext)
     const [videos, setVideos] = useState([]);
     useEffect(()=>{
         fetch(`https://jsonplaceholder.typicode.com/photos`)
         .then(res=> res.json())
         .then(date=> setVideos(date.filter((v) => v.albumId == window.localStorage.getItem("aId"))))
     },[])
-    console.log(movie);
     return(
         <div className="videoItem">
             {videos.length > 0 && (
                 <ul className="videoItem-list">
                     {videos.map((v)=>(
                         <Link to="/video" key={Math.random()} onClick={()=>{
-                            setMovie(v.id)
+                            setMovies(v.id)
                             window.localStorage.setItem("aId", v.albumId)
                             window.localStorage.setItem("vId", v.id)
                             }}>

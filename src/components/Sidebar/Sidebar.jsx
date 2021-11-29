@@ -78,14 +78,6 @@ function Sidebar() {
                 <Link to="/channel" key={Math.random()} onClick={()=>{setMovie(chanelId)}}>
                 <p>{chanelId}<span>- channel</span></p>
                 </Link>
-                
-
-
-                {/* <h4>{video.albumId}</h4>
-                <h5>{video.id}</h5>
-                <img src={video.url} alt="" width="30" height="30" />
-                <img src={video.thumbnailUr} alt="" width="20" height="20" />
-                <p>{video.title}</p> */}
             </li>
             ))}
         </ul>)}
